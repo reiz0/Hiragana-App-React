@@ -11,8 +11,8 @@ export const QuestionContainer = ({isHiragana, states}) => {
       pronounces.splice(pronounceIndex, 1);
       
       pronounceButtonList.push(
-        <tr>
-          <td>
+        <tr className="h-full">
+          <td className="h-1/5 grid place-items-center">
             <AnswerButton choicePronounce={choicePronounce}/>
           </td>
         </tr>
@@ -24,11 +24,11 @@ export const QuestionContainer = ({isHiragana, states}) => {
   const questionLetter = letters[Math.floor(Math.random()*letters.length)]
 
   return(
-    <div>
+    <div className="grid place-items-center w-5/12 bg-green-300">
       {isHiragana ? (
         <p id="que">{questionLetter}</p>
       ) : (
-        <table id="ans">
+        <table id="ans" className="w-4/5 h-9/10">
           {changePronounceButton()}
         </table>
       )}

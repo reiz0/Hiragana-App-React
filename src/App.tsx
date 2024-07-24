@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <div id="pointContainer"><p id="totalPoint"></p></div>
-      <div id="question">
+      <div id="question" className='flex justify-center gap-2 w-full'>
         <QuestionContainer isHiragana={true} states={states} />
         <QuestionContainer isHiragana={false} states={states} />
       </div>
