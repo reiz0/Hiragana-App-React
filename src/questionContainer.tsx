@@ -1,37 +1,28 @@
-import { AnswerButton } from "./answerButton";
+import { useState } from "react";
+import { STATES } from "./App";
+import { getRandomElement, shuffle } from "./helpers/question";
 
-export const QuestionContainer = ({isHiragana, states}) => {
-  const letters = ["あ", "い", "う", "え", "お"]
-  const pronounces = ["a", "i", "u", "e", "o"]
-  const changePronounceButton = () => {
-    const pronounceButtonList = []
-    for(let i = 1; i <= letters.length; i++){
-      const pronounceIndex = Math.floor(Math.random()*pronounces.length);
-      const choicePronounce = pronounces[pronounceIndex]
-      pronounces.splice(pronounceIndex, 1);
-      
-      pronounceButtonList.push(
-        <tr className="h-full">
-          <td className="h-1/5 grid place-items-center">
-            <AnswerButton choicePronounce={choicePronounce}/>
-          </td>
-        </tr>
-      )
-    }
-    return pronounceButtonList
-  }
+type Props = {
+  isHiragana: boolean;
+  states: STATES;
+};
 
-  const questionLetter = letters[Math.floor(Math.random()*letters.length)]
+export const QuestionContainer = ({ isHiragana, states }: Props) => {
+  const [letters] = useState(["あ", "い", "う", "え", "お"]);
+  const [pronounces] = useState(["a", "i", "u", "e", "o"]);
 
-  return(
+  return (
     <div className="grid place-items-center w-5/12 bg-green-300">
-      {isHiragana ? (
-        <p id="que">{questionLetter}</p>
-      ) : (
-        <table id="ans" className="w-4/5 h-9/10">
-          {changePronounceButton()}
-        </table>
+      {isHiragana && <h3>{getRandomElement(letters)}</h3>}
+      {!isHiragana && (
+        <ul className="w-4/5 h-5/6">
+          {shuffle(pronounces).map((pronounce, index) => (
+            <li key={`${pronounce}-${index}`} className="h-1/5 grid place-items-center">
+              <button className="bg-green-700 w-2/5 h-5/6">{pronounce}</button>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
-  )
-}
+  );
+};

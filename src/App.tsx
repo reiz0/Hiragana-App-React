@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { QuestionContainer } from './questionContainer'
 
-type STATES = {
+export type STATES = {
   totalPoint: number,
   changeTotalPoint: () => void,
   questionNum: number,
@@ -45,7 +45,6 @@ function App() {
           </div>
         </div>
       )}
-      
     </>
   )
 }
