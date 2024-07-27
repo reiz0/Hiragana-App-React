@@ -6,6 +6,23 @@ ul {
   list-style: none;
 }
 
+#check {
+  width: 40vw;
+  height: 40vh;
+  background-color: green;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#pointContainer {
+  height: 10vh;
+}
+
+#question {
+  height: 90vh;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
