@@ -1,4 +1,4 @@
-import { STATES } from "./App";
+import { STATES } from "./Quiz";
 
 type Props = {
   isHiragana: boolean;
@@ -7,16 +7,15 @@ type Props = {
 
 export const QuestionContainer = ({ isHiragana, states }: Props) => {
   const showAnswer = (e) => {
-    states.setCorrectAnswer(`Correct answer is ${states.letter}`)
+    states.setCorrectAnswer(`Correct answer is ${states.letter}`);
     if (
       states.letters.indexOf(states.letter) ===
       states.pronounces.indexOf(e.target.textContent)
     ) {
-      states.changeTotalPoint()
-      states.setYourAnswer(`Correct!!`)
+      states.changeTotalPoint();
+      states.setYourAnswer(`Correct!!`);
     } else {
-      states.setYourAnswer(`Your Answer is ${e.target.textContent}`)
-      
+      states.setYourAnswer(`Your Answer is ${e.target.textContent}`);
     }
     states.changeIsShowCheckTrue();
   };

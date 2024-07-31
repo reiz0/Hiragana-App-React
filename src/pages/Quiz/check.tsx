@@ -1,4 +1,4 @@
-import { STATES } from "./App";
+import { STATES } from "./Quiz";
 
 type Props = {
   states: STATES;
@@ -9,13 +9,15 @@ export const Check = ({ states, changeQuestion }: Props) => {
   const nextQuestion = () => {
     states.changeQuestionNum();
     states.changeIsShowCheckFalse();
-    changeQuestion()
+    changeQuestion();
   };
   return (
     <div id="check" className="grid place-content-center">
       {states.questionNum > states.totalNum ? (
         <>
-          <p>Your score!!! {states.totalPoint} / {states.totalNum}</p>
+          <p>
+            Your score!!! {states.totalPoint} / {states.totalNum}
+          </p>
           <div>
             <button className="bg-white m-2">Again</button>
             <button className="bg-white m-2">Back to menu</button>
