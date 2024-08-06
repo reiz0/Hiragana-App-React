@@ -7,7 +7,7 @@ type Props = {
 
 export const QuestionContainer = ({ isHiragana, states }: Props) => {
   const showAnswer = (e) => {
-    states.setCorrectAnswer(`Correct answer is ${states.letter}`);
+    states.setCorrectAnswer(`Correct answer is "${states.pronounces[states.letters.indexOf(states.letter)]}"`);
     if (
       states.letters.indexOf(states.letter) ===
       states.pronounces.indexOf(e.target.textContent)
@@ -39,7 +39,7 @@ export const QuestionContainer = ({ isHiragana, states }: Props) => {
             <li
               key={`${pronounce}-${index}`}
             >
-              <button className="bg-green-300 w-full h-full rounded-xl" onClick={showAnswer}>
+              <button className="bg-green-300 w-full h-full rounded-xl shadow-md" onClick={showAnswer}>
                 <p className="text-4xl font-bold">{pronounce}</p>
               </button>
             </li>

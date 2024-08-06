@@ -75,8 +75,8 @@ export const Quiz = () => {
             <QuestionContainer isHiragana={false} states={states} />
           </div>
           <div className=" grid justify-center">
-            <div className="text-3xl font-bold h-20 w-72 bg-slate-50 rounded-md flex justify-center items-center">
-              <p id="totalPoint">
+            <div className="h-20 w-72 bg-slate-50 rounded-md flex justify-center items-center">
+              <p id="totalPoint" className="text-3xl font-bold">
                 <span className="text-5xl text-green-700">{totalPoint}</span>&nbsp;/ {states.totalNum} point
               </p>
             </div>

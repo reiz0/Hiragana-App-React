@@ -30,11 +30,11 @@ body {
 }
 
 #check {
-  width: 40vw;
-  height: 40vh;
-  background-color: green;
+  width: 25vw;
+  height: 25vh;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: rgba(168, 224, 174, 0.5)
 }
