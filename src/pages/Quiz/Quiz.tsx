@@ -66,15 +66,7 @@ export const Quiz = () => {
   return (
     <>
       {questionNum > 0 && questionNum < states.totalNum + 1 && (
-        <>
-          <div id="pointContainer" className="flex items-center justify-center">
-            <p id="questionNum" className="mx-10">
-              Q.{questionNum}
-            </p>
-            <p id="totalPoint" className="mx-10">
-              {totalPoint} point
-            </p>
-          </div>
+        <div id="quizContainer" className="grid">
           <div
             id="question"
             className="flex justify-center items-center gap-2 w-full"
@@ -82,7 +74,14 @@ export const Quiz = () => {
             <QuestionContainer isHiragana={true} states={states} />
             <QuestionContainer isHiragana={false} states={states} />
           </div>
-        </>
+          <div className=" grid justify-center">
+            <div className="text-3xl font-bold h-20 w-72 bg-slate-50 rounded-md flex justify-center items-center">
+              <p id="totalPoint">
+                <span className="text-5xl text-green-700">{totalPoint}</span>&nbsp;/ {states.totalNum} point
+              </p>
+            </div>
+          </div>
+        </div>
       )}
 
       {(questionNum > states.totalNum || isShowCheck) && (

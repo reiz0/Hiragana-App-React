@@ -21,17 +21,26 @@ export const QuestionContainer = ({ isHiragana, states }: Props) => {
   };
 
   return (
-    <div className="grid place-items-center w-5/12 h-5/6 bg-green-400">
-      {isHiragana && <h3>{states.letter}</h3>}
+    <div className="grid place-items-center w-5/12 h-5/6 bg-slate-50 rounded-md mt-10">
+      {isHiragana && (
+        <>
+        <div className="w-4/5 h-5/6 grid">
+          <div className="flex items-center flex-col">
+            <h2 className="text-4xl">Q.{states.questionNum}</h2>
+            <h2 className="text-2xl py-2">How do you pronounce?</h2>
+          </div>
+          <h3 className="text-9xl my-5 text-center">{states.letter}</h3>
+        </div>
+        </>
+      )}
       {!isHiragana && (
-        <ul className="w-4/5 h-5/6">
+        <ul className="w-4/5 h-5/6 grid gap-3">
           {states.shufflePronounces.map((pronounce, index) => (
             <li
               key={`${pronounce}-${index}`}
-              className="h-1/5 grid place-items-center"
             >
-              <button className="bg-green-200 w-2/5 h-5/6" onClick={showAnswer}>
-                {pronounce}
+              <button className="bg-green-300 w-full h-full rounded-xl" onClick={showAnswer}>
+                <p className="text-4xl font-bold">{pronounce}</p>
               </button>
             </li>
           ))}

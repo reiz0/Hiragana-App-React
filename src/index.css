@@ -6,6 +6,29 @@ ul {
   list-style: none;
 }
 
+header {
+  height: 10vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 1px 10px -5px rgba(0,0,0,0.5);
+}
+
+main {
+  height: 90vh;
+}
+
+
+body {
+  background-image: url(./assets/background.jpg);
+  background-color: rgba(255, 255, 255, 0.2);
+  background-blend-mode: lighten;
+  background-size: cover;
+  background-position: center;
+}
+
+#quizContainer {
+  grid-template-rows: 1fr 140px;
+}
+
 #check {
   width: 40vw;
   height: 40vh;
@@ -14,25 +37,4 @@ ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-#pointContainer {
-  height: 10vh;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-#question {
-  height: 90vh;
-}
-
-#pointContainer {
-  box-shadow: 0px 1px 10px -5px rgba(0,0,0,0.5);
-}
-
-body {
-  background-image: url(./assets/background.jpg);
-  background-color: rgba(255, 255, 255, 0.2);
-  background-blend-mode: lighten;
-  background-size: cover;
-  background-position: center;
 }
