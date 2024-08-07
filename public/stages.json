@@ -28,5 +28,45 @@
     "id":6,
     "letters": ["は", "ひ", "ふ", "へ", "ほ"],
     "pronounces": ["ha", "hi", "fu", "he", "ho"]
+  },
+  {
+    "id":7,
+    "letters": ["ま", "み", "む", "め", "も"],
+    "pronounces": ["ma", "mi", "mu", "me", "mo"]
+  },
+  {
+    "id":8,
+    "letters": ["ら", "り", "る", "れ", "ろ"],
+    "pronounces": ["ra", "ri", "ru", "re", "ro"]
+  },
+  {
+    "id":9,
+    "letters": [ "や", "ゆ", "よ", "わ", "を", "ん"],
+    "pronounces": ["ya", "yu", "yo", "wa", "wo", "nn"]
+  },
+  {
+    "id":10,
+    "letters": ["が", "ぎ", "ぐ", "げ", "ご"],
+    "pronounces": ["ga", "gi", "gu", "ge", "go"]
+  },
+  {
+    "id":11,
+    "letters": ["ざ", "じ", "ず", "ぜ", "ぞ"],
+    "pronounces": ["za", "ji", "zu", "ze", "zo"]
+  },
+  {
+    "id":12,
+    "letters": ["だ", "ぢ", "づ", "で", "ど"],
+    "pronounces": ["da", "ji", "zu", "de", "do"]
+  },
+  {
+    "id":13,
+    "letters": ["ば", "び", "ぶ", "べ", "ぼ"],
+    "pronounces": ["ba", "bi", "bu", "be", "bo"]
+  },
+  {
+    "id":14,
+    "letters": ["ぱ", "ぴ", "ぷ", "ぺ", "ぽ"],
+    "pronounces": ["pa", "pi", "pu", "pe", "po"]
   }
 ]
