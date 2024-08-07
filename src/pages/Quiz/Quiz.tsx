@@ -22,6 +22,9 @@ export type STATES = {
   correctAnswer: string;
   setCorrectAnswer: (ans: string) => void;
   totalNum: number;
+  pointerEvents: string;
+  setPointerEvents: (events: string) => void;
+
 };
 
 
@@ -41,30 +44,31 @@ export const Quiz = () => {
   const [totalPoint, setTotalPoint] = useState(0);
   const [questionNum, setQuestionNum] = useState(0);
   const [isShowCheck, setIsShowCheck] = useState(true);
-  // const [letters] = useState();
   const [letter, setLetter] = useState("あ");
-  // const [pronounces] = useState(["a", "i", "u", "e", "o"]);
   const [shufflePronounces, setshufflePronounces] = useState([...pronounces]);
-  const [yourAnswer, setYourAnswer] = useState("");
-  const [correctAnswer, setCorrectAnswer] = useState("");
+  const [yourAnswer, setYourAnswer] = useState(`Level ${id}`);
+  const [correctAnswer, setCorrectAnswer] = useState(letters.map((e) => e));
+  const [pointerEvents, setPointerEvents] = useState("")
 
   const states: STATES = {
-    totalPoint: totalPoint,
+    totalPoint,
     changeTotalPoint: () => setTotalPoint(totalPoint + 1),
-    questionNum: questionNum,
+    questionNum,
     changeQuestionNum: () => setQuestionNum(questionNum + 1),
-    isShowCheck: isShowCheck,
+    isShowCheck,
     changeIsShowCheckFalse: () => setIsShowCheck(false),
     changeIsShowCheckTrue: () => setIsShowCheck(true),
-    letters: letters,
-    letter: letter,
-    pronounces: pronounces,
-    shufflePronounces: shufflePronounces,
-    yourAnswer: yourAnswer,
+    letters,
+    letter,
+    pronounces,
+    shufflePronounces,
+    yourAnswer,
     setYourAnswer: (ans) => setYourAnswer(ans),
-    correctAnswer: correctAnswer,
+    correctAnswer,
     setCorrectAnswer: (ans) => setCorrectAnswer(ans),
     totalNum: 5,
+    pointerEvents,
+    setPointerEvents: (events) => setPointerEvents(events)
   };
 
   const changeQuestion = () => {

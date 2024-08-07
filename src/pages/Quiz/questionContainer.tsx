@@ -15,9 +15,10 @@ export const QuestionContainer = ({ isHiragana, states }: Props) => {
       states.changeTotalPoint();
       states.setYourAnswer(`Correct!!`);
     } else {
-      states.setYourAnswer(`Your Answer is ${e.target.textContent}`);
+      states.setYourAnswer(`Incorrect!!`);
     }
     states.changeIsShowCheckTrue();
+    states.setPointerEvents("pointer-events-none")
   };
 
   return (
@@ -39,7 +40,7 @@ export const QuestionContainer = ({ isHiragana, states }: Props) => {
             <li
               key={`${pronounce}-${index}`}
             >
-              <button className="bg-green-300 w-full h-full rounded-xl shadow-md" onClick={showAnswer}>
+              <button className={`bg-green-300 w-full h-full rounded-xl shadow-md ${states.pointerEvents}`} onClick={showAnswer}>
                 <p className="text-4xl font-bold">{pronounce}</p>
               </button>
             </li>
