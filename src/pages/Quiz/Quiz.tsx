@@ -2,6 +2,8 @@ import { useState } from "react";
 import { getRandomElement, shuffle } from "../../helpers/question";
 import { Check } from "./check";
 import { QuestionContainer } from "./questionContainer";
+import Data from "../../../public/stages.json"
+import { useParams } from "react-router-dom";
 
 export type STATES = {
   totalPoint: number;
@@ -22,20 +24,27 @@ export type STATES = {
   totalNum: number;
 };
 
+
+
 export const Quiz = () => {
+  const isId = useParams().id;
+  let id = isId? parseInt(isId): 0
+
+  const isLetters = Data.find(element => element.id === id)?.letters
+  const letters = isLetters? isLetters: []
+  !isLetters && (id = 0)
+
+  const isPronounces = Data.find(element => element.id === id)?.pronounces
+  const pronounces = isPronounces? isPronounces:[]
+  !isPronounces && (id = 0)
+
   const [totalPoint, setTotalPoint] = useState(0);
   const [questionNum, setQuestionNum] = useState(0);
   const [isShowCheck, setIsShowCheck] = useState(true);
-  const [letters] = useState(["あ", "い", "う", "え", "お"]);
+  // const [letters] = useState();
   const [letter, setLetter] = useState("あ");
-  const [pronounces] = useState(["a", "i", "u", "e", "o"]);
-  const [shufflePronounces, setshufflePronounces] = useState([
-    "a",
-    "i",
-    "u",
-    "e",
-    "o",
-  ]);
+  // const [pronounces] = useState(["a", "i", "u", "e", "o"]);
+  const [shufflePronounces, setshufflePronounces] = useState([...pronounces]);
   const [yourAnswer, setYourAnswer] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState("");
 
@@ -65,7 +74,14 @@ export const Quiz = () => {
 
   return (
     <>
-      {questionNum > 0 && questionNum < states.totalNum + 1 && (
+      {id === 0 && (
+        <div>
+          <h1>This ID is not available.</h1>
+          <h3>I am sorry but please press HIRAGANA APP logo and go back to main page.</h3>
+        </div>
+      )}
+
+      {id !== 0 && questionNum > 0 && questionNum < states.totalNum + 1 && (
         <div id="quizContainer" className="grid">
           <div
             id="question"
@@ -84,8 +100,8 @@ export const Quiz = () => {
         </div>
       )}
 
-      {(questionNum > states.totalNum || isShowCheck) && (
-        <Check states={states} changeQuestion={changeQuestion} />
+      {id !== 0 && (questionNum > states.totalNum || isShowCheck) && (
+        <Check states={states} changeQuestion={changeQuestion} id={id} />
       )}
     </>
   );

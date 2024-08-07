@@ -3,9 +3,10 @@ import { STATES } from "./Quiz";
 type Props = {
   states: STATES;
   changeQuestion: () => void;
+  id: number;
 };
 
-export const Check = ({ states, changeQuestion }: Props) => {
+export const Check = ({ states, changeQuestion, id }: Props) => {
   const nextQuestion = () => {
     states.changeQuestionNum();
     states.changeIsShowCheckFalse();
@@ -18,8 +19,8 @@ export const Check = ({ states, changeQuestion }: Props) => {
           <p className="text-center text-4xl">Your score!!!</p>
           <p className="text-center text-3xl font-bold"><span className="text-5xl text-green-700">{states.totalPoint}</span>&nbsp;/ {states.totalNum}</p>
           <div>
-            <button className="bg-green-300 m-2 p-2 w-28 rounded-xl shadow-lg border-green-800 border-2"><a href="/quiz">Again</a></button>
-            <button className="bg-green-300 m-2 p-2 w-28 rounded-xl shadow-lg border-green-800 border-2">Next Level</button>
+            <button className="bg-green-300 m-2 p-2 w-28 rounded-xl shadow-lg border-green-800 border-2"><a href={`/quiz/${id}`}>Again</a></button>
+            <button className="bg-green-300 m-2 p-2 w-28 rounded-xl shadow-lg border-green-800 border-2"><a href={`/quiz/${id+1}`}>Next Level</a></button>
           </div>
         </>
       ) : (

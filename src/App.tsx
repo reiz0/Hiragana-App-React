@@ -14,7 +14,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Menu />} />
-            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/quiz/:id" element={<Quiz />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </Router>

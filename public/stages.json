@@ -1,0 +1,32 @@
+[
+  {
+    "id":1,
+    "letters": ["あ", "い", "う", "え", "お"],
+    "pronounces": ["a", "i", "u", "e", "o"]
+  },
+  {
+    "id":2,
+    "letters": ["か", "き", "く", "け", "こ"],
+    "pronounces": [ "ka", "ki", "ku", "ke", "ko"]
+  },
+  {
+    "id":3,
+    "letters": ["さ", "し", "す", "せ", "そ"],
+    "pronounces": ["sa", "shi", "su", "se", "so"]
+  },
+  {
+    "id":4,
+    "letters": ["た", "ち", "つ", "て", "と"],
+    "pronounces": ["ta", "chi", "tsu", "te", "to"]
+  },
+  {
+    "id":5,
+    "letters": ["な", "に", "ぬ", "ね", "の"],
+    "pronounces": ["na", "ni", "nu", "ne", "no"]
+  },
+  {
+    "id":6,
+    "letters": ["は", "ひ", "ふ", "へ", "ほ"],
+    "pronounces": ["ha", "hi", "fu", "he", "ho"]
+  }
+]
