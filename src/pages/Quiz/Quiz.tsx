@@ -47,7 +47,7 @@ export const Quiz = () => {
   const [letter, setLetter] = useState("あ");
   const [shufflePronounces, setshufflePronounces] = useState([...pronounces]);
   const [yourAnswer, setYourAnswer] = useState(`Level ${id}`);
-  const [correctAnswer, setCorrectAnswer] = useState(letters.map((e) => e));
+  const [correctAnswer, setCorrectAnswer] = useState(`${letters.map((e) => `${e}`).join("")}`);
   const [pointerEvents, setPointerEvents] = useState("")
 
   const states: STATES = {
@@ -66,7 +66,7 @@ export const Quiz = () => {
     setYourAnswer: (ans) => setYourAnswer(ans),
     correctAnswer,
     setCorrectAnswer: (ans) => setCorrectAnswer(ans),
-    totalNum: 5,
+    totalNum: 10,
     pointerEvents,
     setPointerEvents: (events) => setPointerEvents(events)
   };
