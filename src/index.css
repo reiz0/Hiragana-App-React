@@ -32,9 +32,11 @@ body {
 #check {
   width: 25vw;
   height: 25vh;
+  min-width: 250px;
+  min-height: 220px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(168, 224, 174, 0.5)
+  background-color: rgba(168, 224, 174, 0.96)
 }
