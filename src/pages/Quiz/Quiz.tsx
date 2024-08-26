@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getRandomElement, shuffle } from "../../helpers/question";
 import { Check } from "./check";
 import { QuestionContainer } from "./questionContainer";
-import Data from "../../../public/stages.json";
+import Data from "../../assets/stages.json";
 import { useParams } from "react-router-dom";
 
 export type STATES = {
