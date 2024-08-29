@@ -1,19 +1,50 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { FormEvent, useContext, useState } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
+import { LoginUserType, NewUserType } from "../../types/types";
 
 export const Login = () => {
   const pathname = useLocation().pathname;
+  const { login, register, currentUser } = useContext(AuthContext);
 
   const [userName, setUserName] = useState("");
   const [accountName, setAccountName] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState("")
 
   const inputClass =
     "text-black w-full my-5 px-4 py-2 border border-green-950 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400";
 
+  const handleLoginUser = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading("pointer-events-none bg-green-900")
+
+    if (pathname === "/login") {
+      const loginUser: LoginUserType = {
+        accountName,
+        password,
+      };
+      login(loginUser);
+    }
+
+    if (pathname === "/register") {
+      const newUser: NewUserType = {
+        userName,
+        accountName,
+        password,
+      };
+      register(newUser);
+    }
+  };
+
   return (
     <div className="grid place-content-center">
-      <form method="post" className="bg-green-200 p-5 rounded-md">
+      {currentUser && <Navigate replace to="/" />}
+      <form
+        method="post"
+        className="bg-green-200 p-5 rounded-md"
+        onSubmit={handleLoginUser}
+      >
         <h1 className="text-center mb-6 test-2xl font-bold">
           {pathname === "/login" && "Login"}
           {pathname === "/register" && "Register"}
@@ -52,7 +83,7 @@ export const Login = () => {
         />
         <button
           type="submit"
-          className="w-full my-5 text-white py-2 rounded-md bg-green-950"
+          className={`w-full my-5 text-white py-2 rounded-md bg-green-950 ${loading}`}
         >
           {pathname === "/login" && "Login"}
           {pathname === "/register" && "Register"}

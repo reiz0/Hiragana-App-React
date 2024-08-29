@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Data from "../../assets/stages.json";
 
 export const Menu = () => {
@@ -7,8 +8,8 @@ export const Menu = () => {
         <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-7 gap-x-14">
           {Data.map((stage) => (
             <div key={stage.id} className="bg-slate-50 rounded-md w-60 h-40">
-              <a
-                href={`/quiz/${stage.id}`}
+              <Link
+                to={`/quiz/${stage.id}`}
                 className="h-full grid place-items-center"
               >
                 <div>
@@ -17,7 +18,7 @@ export const Menu = () => {
                     {stage.letters.map((letter) => letter)}
                   </p>
                 </div>
-              </a>
+              </Link>
             </div>
           ))}
         </div>

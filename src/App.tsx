@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { AuthContextProvider } from "./context/auth.context";
 import { Header } from "./Header";
 import { Login } from "./pages/Login/page";
 import { Menu } from "./pages/Menu/page";
@@ -7,10 +8,10 @@ import { Quiz } from "./pages/Quiz/Quiz";
 
 function App() {
   return (
-    <>
+    <AuthContextProvider>
       <Router>
-      <Header />
-      <main className="grid">
+        <Header />
+        <main className="grid">
           <Routes>
             <Route path="/" element={<Menu />} />
             <Route path="/login" element={<Login />} />
@@ -18,9 +19,9 @@ function App() {
             <Route path="/quiz/:id" element={<Quiz />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
-      </main>
+        </main>
       </Router>
-    </>
+    </AuthContextProvider>
   );
 }
 
