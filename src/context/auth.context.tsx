@@ -27,8 +27,6 @@ export const AuthContextProvider = ({children}: Props) => {
   const [currentUser, setCurrentUser] = useState(null)
 
   const login = async(payload: LoginUserType) => {
-    console.log(payload);
-    
     const user = await loginService(payload)
     setCurrentUser(user)
   }

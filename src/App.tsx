@@ -5,6 +5,7 @@ import { Login } from "./pages/Login/page";
 import { Menu } from "./pages/Menu/page";
 import { NoMatch } from "./pages/NoMatch";
 import { Quiz } from "./pages/Quiz/Quiz";
+import { UserProfile } from "./pages/userProfile/page";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Login />} />
             <Route path="/quiz/:id" element={<Quiz />} />
+            <Route path="/profile" element={<UserProfile />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </main>

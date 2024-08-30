@@ -20,10 +20,12 @@ export const Header = () => {
         </Link>
       )}
       {currentUser && (
+        <Link to="/profile">
         <div className="mr-2 text-center">
           <FaRegUserCircle className="text-4xl text-green-950 font-bold" />
           <p>{currentUser.userName}</p>
         </div>
+        </Link>
       )}
     </header>
   );

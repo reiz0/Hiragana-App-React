@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import { LoginUserType, NewUserType } from "../../types/types";
@@ -14,10 +14,14 @@ export const Login = () => {
 
   const inputClass =
     "text-black w-full my-5 px-4 py-2 border border-green-950 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400";
+  
+  useEffect(() => {
+    setLoading("")
+  }, [pathname])
 
   const handleLoginUser = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading("pointer-events-none bg-green-900")
+    setLoading("pointer-events-none bg-green-200")
 
     if (pathname === "/login") {
       const loginUser: LoginUserType = {
