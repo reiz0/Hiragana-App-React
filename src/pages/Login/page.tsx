@@ -2,6 +2,7 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import { LoginUserType, NewUserType } from "../../types/types";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const pathname = useLocation().pathname;
@@ -92,6 +93,9 @@ export const Login = () => {
           {pathname === "/login" && "Login"}
           {pathname === "/register" && "Register"}
         </button>
+        {pathname === "/login" && (
+          <p>Don't have any account? register <Link to="/register" className="text-red-800">HERE</Link>!</p>
+        )}
       </form>
     </div>
   );
