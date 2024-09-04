@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getRandomElement, shuffle } from "../../helpers/question";
 import { Check } from "./check";
 import { QuestionContainer } from "./questionContainer";
-import Data from "../../../public/stages.json";
+import Data from "../../assets/stages.json";
 import { useParams } from "react-router-dom";
 
 export type STATES = {
@@ -24,10 +24,12 @@ export type STATES = {
   totalNum: number;
   pointerEvents: string;
   setPointerEvents: (events: string) => void;
+  resetAllQuiz: () => void
 };
 
 export const Quiz = () => {
   const isId = useParams().id;
+  
   let id = isId ? parseInt(isId) : 0;
 
   const isLetters = Data.find((element) => element.id === id)?.letters;
@@ -41,13 +43,28 @@ export const Quiz = () => {
   const [totalPoint, setTotalPoint] = useState(0);
   const [questionNum, setQuestionNum] = useState(0);
   const [isShowCheck, setIsShowCheck] = useState(true);
-  const [letter, setLetter] = useState("あ");
+  const [letter, setLetter] = useState("");
   const [shufflePronounces, setshufflePronounces] = useState([...pronounces]);
   const [yourAnswer, setYourAnswer] = useState(`Level ${id}`);
   const [correctAnswer, setCorrectAnswer] = useState(
     `${letters.map((e) => `${e}`).join("")}`
   );
   const [pointerEvents, setPointerEvents] = useState("");
+
+  const resetAllQuiz = () => {
+    setTotalPoint(0)
+    setQuestionNum(0)
+    setIsShowCheck(true)
+    setshufflePronounces([...pronounces])
+    setYourAnswer(`Level ${id}`)
+    setCorrectAnswer(`${letters.map((e) => `${e}`).join("")}`)
+    setPointerEvents("")
+  }
+
+  useEffect(() => {
+    resetAllQuiz()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id])
 
   const states: STATES = {
     totalPoint,
@@ -68,6 +85,7 @@ export const Quiz = () => {
     totalNum: 10,
     pointerEvents,
     setPointerEvents: (events) => setPointerEvents(events),
+    resetAllQuiz
   };
 
   const changeQuestion = () => {
