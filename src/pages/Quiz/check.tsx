@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
 import { STATES } from "./Quiz";
 
 type Props = {
@@ -14,7 +16,9 @@ export const Check = ({ states, changeQuestion, id }: Props) => {
     changeQuestion();
     states.setPointerEvents("");
   };
+  const { currentUser } = useContext(AuthContext);
   return (
+    <>
     <div
       id="check"
       className="grid place-content-center bg-green-300 rounded-md shadow-2xl"
@@ -27,7 +31,10 @@ export const Check = ({ states, changeQuestion, id }: Props) => {
             &nbsp;/ {states.totalNum}
           </p>
           <div className="text-center">
-            <button className="bg-green-300 m-2 w-28 rounded-xl shadow-lg border-green-800 border-2" onClick={states.resetAllQuiz}>
+            <button
+              className="bg-green-300 m-2 w-28 rounded-xl shadow-lg border-green-800 border-2"
+              onClick={states.resetAllQuiz}
+            >
               <Link to={`/quiz/${id}`} className="p-2 block">
                 Again
               </Link>
@@ -59,5 +66,12 @@ export const Check = ({ states, changeQuestion, id }: Props) => {
         </>
       )}
     </div>
+      {states.questionNum < 1 && !currentUser && (
+        <div className="text-center m-3 pt-1">
+          <p className="text-red-800 text-3xl font-extrabold">To save your score, please login to your account</p>
+          <p className="text-red-800">*Without logging in, you can continue</p>
+        </div>
+      )}
+    </>
   );
 };
