@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Data from "../../assets/stages.json";
 import { AuthContext } from "../../context/auth.context";
@@ -54,6 +54,15 @@ export const Quiz = () => {
   );
   const [pointerEvents, setPointerEvents] = useState("");
 
+  const resetAll = () => {
+    setTotalPoint(0);
+    setQuestionNum(0);
+    setIsShowCheck(true);
+    setshufflePronounces([...pronounces]);
+    setYourAnswer(`Level ${id}`);
+    setCorrectAnswer(`${letters.map((e) => `${e}`).join("")}`);
+    setPointerEvents("");
+  }
   const saveScore = async () => {
     if (currentUser) {
       await storeNewScoreService({
@@ -63,14 +72,12 @@ export const Quiz = () => {
         quiz: "hiragana"
       });
     }
-    setTotalPoint(0);
-    setQuestionNum(0);
-    setIsShowCheck(true);
-    setshufflePronounces([...pronounces]);
-    setYourAnswer(`Level ${id}`);
-    setCorrectAnswer(`${letters.map((e) => `${e}`).join("")}`);
-    setPointerEvents("");
+    resetAll()
   };
+  useEffect(()=>{
+    resetAll()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[id])
 
   const states: STATES = {
     totalPoint,
