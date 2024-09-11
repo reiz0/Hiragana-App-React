@@ -22,7 +22,7 @@ export const Login = () => {
 
   const handleLoginUser = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading("pointer-events-none bg-green-200")
+    setLoading("pointer-events-none bg-green-100")
 
     if (pathname === "/login") {
       const loginUser: LoginUserType = {
