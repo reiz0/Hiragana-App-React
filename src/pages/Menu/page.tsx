@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Data from "../../assets/stages.json";
 
 export const Menu = () => {
+  
   return (
     <div className="py-10 flex justify-center">
       <div className="max-w-5xl">
