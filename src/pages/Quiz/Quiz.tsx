@@ -56,14 +56,12 @@ export const Quiz = () => {
 
   const saveScore = async () => {
     if (currentUser) {
-      const store = await storeNewScoreService({
+      await storeNewScoreService({
         level: id,
         user: currentUser._id,
         score: totalPoint,
+        quiz: "hiragana"
       });
-      if (store) {
-        return "store data succesfully";
-      }
     }
     setTotalPoint(0);
     setQuestionNum(0);

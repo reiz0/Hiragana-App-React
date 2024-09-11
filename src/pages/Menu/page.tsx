@@ -1,8 +1,33 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Data from "../../assets/stages.json";
+import { AuthContext } from "../../context/auth.context";
+import { getAllMaxScoreService } from "../../services/score.service";
+import { scoreType } from "../../types/types";
 
 export const Menu = () => {
-  
+  const { currentUser } = useContext(AuthContext);
+  const [allMaxScore, setAllMaxScore] = useState<scoreType[]>([]);
+  useEffect(() => {
+    async () => {
+      if (currentUser) {
+        const getMaxScore = await getAllMaxScoreService({
+          user: currentUser?._id,
+        });
+        getMaxScore && setAllMaxScore(getMaxScore);
+      }
+    };
+  }, []);
+
+  const findMaxScore = (level: number) => {
+    const isMaxScore = allMaxScore.find((score) => score.level === level);
+    if (isMaxScore) {
+      return `${isMaxScore.score} point`;
+    } else {
+      return "0 point";
+    }
+  };
+
   return (
     <div className="py-10 flex justify-center">
       <div className="max-w-5xl">
@@ -18,6 +43,7 @@ export const Menu = () => {
                   <p className="text-2xl">
                     {stage.letters.map((letter) => letter)}
                   </p>
+                  {currentUser && <p>{findMaxScore(stage.id)}</p>}
                 </div>
               </Link>
             </div>
