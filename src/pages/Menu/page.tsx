@@ -9,14 +9,16 @@ export const Menu = () => {
   const { currentUser } = useContext(AuthContext);
   const [allMaxScore, setAllMaxScore] = useState<scoreType[]>([]);
   useEffect(() => {
-    async () => {
+    const getScore = async () => {
       if (currentUser) {
         const getMaxScore = await getAllMaxScoreService({
-          user: currentUser?._id,
+          user: currentUser._id,
         });
         getMaxScore && setAllMaxScore(getMaxScore);
       }
     };
+    getScore();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const findMaxScore = (level: number) => {
