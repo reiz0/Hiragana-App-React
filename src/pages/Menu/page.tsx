@@ -26,7 +26,7 @@ export const Menu = () => {
     if (isMaxScore) {
       return `${isMaxScore.score} point`;
     } else {
-      return "0 point";
+      return "No Score yet";
     }
   };
 
@@ -35,7 +35,7 @@ export const Menu = () => {
       <div className="max-w-5xl">
         <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-7 gap-x-14">
           {Data.map((stage) => (
-            <div key={stage.id} className="bg-slate-50 rounded-md w-60 h-40">
+            <div key={stage.id} className="bg-slate-50 rounded-md w-60 h-40 text-center">
               <Link
                 to={`/quiz/${stage.id}`}
                 className="h-full grid place-items-center"
@@ -45,7 +45,7 @@ export const Menu = () => {
                   <p className="text-2xl">
                     {stage.letters.map((letter) => letter)}
                   </p>
-                  {currentUser && <p>{findMaxScore(stage.id)}</p>}
+                  {currentUser && <p className="text-xl text-orange-700">{findMaxScore(stage.id)}</p>}
                 </div>
               </Link>
             </div>
