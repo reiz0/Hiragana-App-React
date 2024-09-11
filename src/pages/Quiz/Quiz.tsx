@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import { useParams } from "react-router-dom";
+import Data from "../../assets/stages.json";
+import { AuthContext } from "../../context/auth.context";
 import { getRandomElement, shuffle } from "../../helpers/question";
+import { storeNewScoreService } from "../../services/score.service";
 import { Check } from "./check";
 import { QuestionContainer } from "./questionContainer";
-import Data from "../../assets/stages.json";
-import { useParams } from "react-router-dom";
 
 export type STATES = {
   totalPoint: number;
@@ -24,12 +26,13 @@ export type STATES = {
   totalNum: number;
   pointerEvents: string;
   setPointerEvents: (events: string) => void;
-  resetAllQuiz: () => void
+  saveScore: () => void;
 };
 
 export const Quiz = () => {
+  const { currentUser } = useContext(AuthContext);
   const isId = useParams().id;
-  
+
   let id = isId ? parseInt(isId) : 0;
 
   const isLetters = Data.find((element) => element.id === id)?.letters;
@@ -51,20 +54,25 @@ export const Quiz = () => {
   );
   const [pointerEvents, setPointerEvents] = useState("");
 
-  const resetAllQuiz = () => {
-    setTotalPoint(0)
-    setQuestionNum(0)
-    setIsShowCheck(true)
-    setshufflePronounces([...pronounces])
-    setYourAnswer(`Level ${id}`)
-    setCorrectAnswer(`${letters.map((e) => `${e}`).join("")}`)
-    setPointerEvents("")
-  }
-
-  useEffect(() => {
-    resetAllQuiz()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id])
+  const saveScore = async () => {
+    if (currentUser) {
+      const store = await storeNewScoreService({
+        level: id,
+        user: currentUser._id,
+        score: totalPoint,
+      });
+      if (store) {
+        return "store data succesfully";
+      }
+    }
+    setTotalPoint(0);
+    setQuestionNum(0);
+    setIsShowCheck(true);
+    setshufflePronounces([...pronounces]);
+    setYourAnswer(`Level ${id}`);
+    setCorrectAnswer(`${letters.map((e) => `${e}`).join("")}`);
+    setPointerEvents("");
+  };
 
   const states: STATES = {
     totalPoint,
@@ -85,7 +93,7 @@ export const Quiz = () => {
     totalNum: 10,
     pointerEvents,
     setPointerEvents: (events) => setPointerEvents(events),
-    resetAllQuiz
+    saveScore,
   };
 
   const changeQuestion = () => {
