@@ -4,6 +4,8 @@ import { AuthContext } from "../../context/auth.context";
 
 export const UserProfile = () => {
   const { logout, currentUser } = useContext(AuthContext);
+  console.log(currentUser);
+  
   return (
     <div className="grid place-content-center">
       <div className="bg-green-200 p-5 rounded-md text-center">
