@@ -1,19 +1,23 @@
 # Hiragana App
 
-This app is for lerning the pronounce of Japanese letter by quiz. User can enjoy quiz as a game and remember how to pronounce Japanese letter with fun.
+This app helps users learn the pronunciation of Japanese characters through quizzes. It offers a game-like experience, making it fun and engaging to memorize how to pronounce hiragana characters.
+
 
 
 ## Major functions
 
-- User can choose the level of quiz
-- In each quiz, user can know how many points they get
-- User should choose the answer of the question from 5 to 6 buttons
-- When user signed in, they can store high score to each level of quiz
+- Level Selection: Users can choose from different difficulty levels.
+-	Scoring: Each quiz shows how many points the user has earned.
+-	Multiple Choice Questions: Users select the correct answer from 5 to 6 buttons for each question.
+-	User Authentication: Logged-in users can store their high scores for each quiz level and track progress.
 
 
 ## dependencies
 
+Make sure the following dependencies are installed and up-to-date:
+
 ```json
+{
 "express": "^4.19.2",
 "react": "^18.3.1",
 "react-dom": "^18.3.1"
@@ -34,11 +38,48 @@ This app is for lerning the pronounce of Japanese letter by quiz. User can enjoy
 "tailwindcss": "^3.4.6",
 "typescript": "^5.2.2",
 "vite": "^5.3.4"
+}
 ```
 
 
-## build/deploy instructions
+## build and deploy instructions
 
-- install package by `npm i`
-- build the page by `npm run build`
-- run page in the localhost by `npm run dev`
+Follow these steps to build and deploy the app locally or to a server:
+
+- Local Development
+	1.	Install Dependencies:
+
+        Run the following command to install all necessary packages:
+
+            npm install
+  
+	2.	Start the Development Server:
+
+        Run this command to launch the app locally:
+   	
+            npm run dev
+   	
+    The app will be available at http://localhost:3000 (or another port specified in the console).
+
+- Production Build
+	1.	Create a Production Build:
+
+        Run the following command to build the app for production:
+
+   	        npm run build
+  
+        This will generate a dist/ directory with optimized files.
+  
+	2.	Deploy to a Server:
+
+        -	Serve the files in the dist/ directory using a static file server (like Nginx, Apache, or Vercel).
+      	-	If deploying to Vercel, Netlify, or Render, specify:
+      	-	Build Command: `npm run build`
+      	-	Output Directory: dist/
+
+- Environment Variables
+    ```
+      MONGO_URI=YOUR_MONGO_DB_URI
+      HOST=localhos
+      PORT=4000
+    ```
