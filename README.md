@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# Hiragana App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This app is for lerning the pronounce of Japanese letter by quiz. User can enjoy quiz as a game and remember how to pronounce Japanese letter with fun.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Major functions
 
-## Expanding the ESLint configuration
+- User can choose the level of quiz
+- In each quiz, user can know how many points they get
+- User should choose the answer of the question from 5 to 6 buttons
+- When user signed in, they can store high score to each level of quiz
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## dependencies
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```json
+"express": "^4.19.2",
+"react": "^18.3.1",
+"react-dom": "^18.3.1"
+"@types/express": "^4.17.21",
+"@types/react": "^18.3.3",
+"@types/react-dom": "^18.3.0",
+"@types/react-router-dom": "^5.3.3",
+"@typescript-eslint/eslint-plugin": "^7.15.0",
+"@typescript-eslint/parser": "^7.15.0",
+"@vitejs/plugin-react": "^4.3.1",
+"autoprefixer": "^10.4.19",
+"eslint": "^8.57.0",
+"eslint-plugin-react-hooks": "^4.6.2",
+"eslint-plugin-react-refresh": "^0.4.7",
+"postcss": "^8.4.39",
+"react-icons": "^5.3.0",
+"react-router-dom": "^6.25.1",
+"tailwindcss": "^3.4.6",
+"typescript": "^5.2.2",
+"vite": "^5.3.4"
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## build/deploy instructions
+
+- install package by `npm i`
+- build the page by `npm run build`
+- run page in the localhost by `npm run dev`
