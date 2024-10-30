@@ -83,3 +83,10 @@ Follow these steps to build and deploy the app locally or to a server:
       HOST=localhos
       PORT=4000
     ```
+
+## Test login
+	account name : test
+ 	password : test
+
+  you can test logged in page with this account name and password.
+ 		
